@@ -8,4 +8,4 @@ group by Email having count(Email)>1
 ```
 
 # 总结 #
-从person表中选出出现次数大于1的电子邮箱
+从person表中选出出现次数大于1的电子邮箱。
