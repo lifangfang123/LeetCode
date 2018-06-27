@@ -1,0 +1,34 @@
+# 问题 #
+假设你有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花卉不能种植在相邻的地块上，它们会争夺水源，两者都会死去。
+
+给定一个花坛（表示为一个数组包含0和1，其中0表示没种植花，1表示种植了花），和一个数 n 。能否在不打破种植规则的情况下种入 n 朵花？能则返回True，不能则返回False。
+# 代码 #
+```C++
+
+
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+        int cnt, ans = 0, st = -1, ed = flowerbed.size()-1;
+        for(int i=0; i<=ed; ++i){
+            if(flowerbed[i] == 1){
+                cnt = i - 1 - st;
+                if(cnt > 0){
+                    ans += cnt/2;
+                }
+                st = i + 1;
+            }
+        }
+        if(flowerbed[ed] != 1){
+            cnt = ed + 1 - st;
+            if(cnt > 0){
+                ans += cnt/2;
+            }
+        }
+        return (ans >= n);
+    }
+};
+```
+
+# 总结 #
+利用for和if
