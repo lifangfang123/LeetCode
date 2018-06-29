@@ -8,24 +8,14 @@
 
 class Solution {
 public:
-    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
-        int cnt, ans = 0, st = -1, ed = flowerbed.size()-1;
-        for(int i=0; i<=ed; ++i){
-            if(flowerbed[i] == 1){
-                cnt = i - 1 - st;
-                if(cnt > 0){
-                    ans += cnt/2;
-                }
-                st = i + 1;
-            }
+    bool canJump(vector<int>& nums) {
+        int loc=0;
+        int i=0;
+        
+        for(int i=0;i<nums.size() && i<=loc;i++){
+            loc=max(loc,i+nums[i]);
         }
-        if(flowerbed[ed] != 1){
-            cnt = ed + 1 - st;
-            if(cnt > 0){
-                ans += cnt/2;
-            }
-        }
-        return (ans >= n);
+        return loc>=nums.size()-1;
     }
 };
 ```
